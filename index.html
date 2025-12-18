@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilingual TypeRace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Roboto+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>TypeRace <span class="accent">Bilingual</span></h1>
+            <div class="language-selector">
+                <button id="lang-en" class="lang-btn active" data-lang="en">English</button>
+                <button id="lang-es" class="lang-btn" data-lang="es">Español</button>
+                <button id="lang-fr" class="lang-btn" data-lang="fr">Français</button>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <!-- Race Track Section -->
+            <div class="race-track-container">
+                <div class="track-lane player-lane">
+                    <div class="car player-car" id="player-car">🏎️</div>
+                    <div class="finish-line">🏁</div>
+                </div>
+                <div class="track-lane bot-lane">
+                    <div class="car bot-car" id="bot-car-1">🤖</div>
+                    <div class="finish-line">🏁</div>
+                </div>
+                <div class="track-lane bot-lane">
+                    <div class="car bot-car" id="bot-car-2">👽</div>
+                    <div class="finish-line">🏁</div>
+                </div>
+                <div class="track-lane bot-lane">
+                    <div class="car bot-car" id="bot-car-3">👻</div>
+                    <div class="finish-line">🏁</div>
+                </div>
+            </div>
+
+            <!-- Typing Area -->
+            <div class="typing-container">
+                <div class="text-display" id="text-display">
+                    <!-- Text will be injected here -->
+                    <span class="placeholder">Select a language and press Start to begin!</span>
+                </div>
+                <input type="text" id="input-field" class="input-field" placeholder="Type here..." autocomplete="off"
+                    disabled>
+            </div>
+
+            <!-- Stats & Controls -->
+            <div class="game-controls">
+                <div class="stat-box">
+                    <span class="label">WPM</span>
+                    <span class="value" id="wpm-display">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Time</span>
+                    <span class="value" id="time-display">0s</span>
+                </div>
+                <button id="start-btn" class="primary-btn">Start Race</button>
+            </div>
+        </main>
+
+        <!-- Modals / Overlays -->
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="result-title">Race Finished!</h2>
+                <p id="result-message">You typed at 45 WPM.</p>
+                <button id="restart-btn" class="primary-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="sentences.js?v=4"></script>
+    <script src="script.js?v=4"></script>
+</body>
+
+</html>

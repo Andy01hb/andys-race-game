@@ -254,6 +254,13 @@ class GameEngine {
     }
 
     updatePlaceholder() {
+        if (!this.authManager.user) {
+            this.textDisplay.innerHTML = `<span class="placeholder" style="color: var(--accent-color)">Please login to play 🔒 / Inicia sesión para jugar 🔒</span>`;
+            // Ensure start button is disabled visually if not logged in (optional double check)
+            this.startBtn.disabled = false; // We leave it enabled so clicking it triggers the alert + auto-login
+            return;
+        }
+
         const placeholderText = this.currentLang === 'en'
             ? "Press Start to race!"
             : "¡Presiona Iniciar para correr!";
@@ -266,6 +273,13 @@ class GameEngine {
     }
 
     startGame() {
+        // Strict Login Check
+        if (!this.authManager.user) {
+            alert("⚠️ Please sign in with Google to play!\n\n⚠️ ¡Por favor inicia sesión con Google para jugar!");
+            this.authManager.login(); // Prompt login automatically
+            return;
+        }
+
         this.isPlaying = true;
         this.targetText = this.getRandomSentence();
         this.typedText = "";

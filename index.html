@@ -17,6 +17,21 @@
     <div class="app-container">
         <header>
             <h1>TypeRace <span class="accent">Bilingual</span></h1>
+
+            <!-- Auth UI -->
+            <div id="auth-section" class="auth-section">
+                <div id="login-container">
+                    <button id="login-btn" class="google-btn">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+                        Sign in with Google
+                    </button>
+                </div>
+                <div id="user-info" class="hidden">
+                    <span id="user-name-display">Player</span>
+                    <button id="logout-btn" class="text-btn">(Logout)</button>
+                </div>
+            </div>
+
             <div class="language-selector">
                 <button id="lang-en" class="lang-btn active" data-lang="en">English</button>
                 <button id="lang-es" class="lang-btn" data-lang="es">Español</button>
@@ -79,6 +94,9 @@
         </div>
     </div>
 
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="firebase-config.js"></script>
     <script src="sentences.js?v=4"></script>
